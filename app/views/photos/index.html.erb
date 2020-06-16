@@ -3,3 +3,12 @@
 <p>we can see all other photos of cats</p>
 <p>and we can click on the button upload</p>
 <p>to upload our cat photo and be showed here</p>
+<% @photos.each do |photo| %>
+    <li><%= photo.title %></li>
+    <li><%= photo.description %></li>
+    <li><%= photo.votes %></li>
+    <li><%= photo.image %></li>
+<% end%>
+
+<%= link_to "Create new", upload_path %>
+

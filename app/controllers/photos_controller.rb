@@ -28,6 +28,6 @@ class PhotosController < ApplicationController
 
   # Esta se usa cuando se crea uno nuevo
   def photo_params
-    params.require(:photo).permit(:title, :description, :votes, :image)
+    params.require(:photo).permit(:title, :description, :votes, :image, :image_cache)
   end
 end

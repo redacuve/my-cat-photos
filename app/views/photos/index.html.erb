@@ -7,7 +7,10 @@
     <li><%= photo.title %></li>
     <li><%= photo.description %></li>
     <li><%= photo.votes %></li>
-    <li><%= photo.image %></li>
+    <li><%= photo.image.url %></li>
+    <% if !photo.image.url.nil? %>
+    <%= image_tag photo.image.url %>
+    <% end %>
 <% end%>
 
 <%= link_to "Create new", upload_path %>

@@ -1,4 +1,4 @@
-<%= form_with(model: @photo, local: true) do |form| %>
+<%= form_with(model: @photo, local: true, html: { multipart: true }) do |form| %>
     <% if @photo.errors.any? %>
         <div>
             <h2><%= pluralize(@photo.errors.count, "error") %></h2>
@@ -27,6 +27,8 @@
         <%= form.label :image, 'Upload the foto' %>
         <%= form.file_field :image %>
     </div>
+
+    <%= form.hidden_field :image_cache %>
 
     <div class="actions">
         <%= form.submit "Upload Your photo" %>

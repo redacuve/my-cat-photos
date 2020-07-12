@@ -2,6 +2,11 @@ class PhotosController < ApplicationController
   before_action :set_user, only: %i[edit show]
   def index
     @photos = Photo.all
+    @photos = if params[:sort] == 'likes'
+                Photo.most_liked
+              else
+                Photo.recents
+              end
   end
 
   def new
@@ -12,6 +17,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    @photo.votes = 0;
     if @photo.save
       flash[:success] = 'Photo Created successfully'
       redirect_to root_path
@@ -26,8 +32,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
 
-  # Esta se usa cuando se crea uno nuevo
   def photo_params
-    params.require(:photo).permit(:title, :description, :votes, :image, :image_cache)
+    params.require(:photo).permit(:title, :description, :image, :image_cache)
   end
 end

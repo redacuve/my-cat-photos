@@ -1,23 +1,42 @@
-<h2>All photos</h2>
-<% @photos.each do |photo| %>
-    <div class="photo-container">
-        <div class="title-image">
-            <h3><%= photo.title %></h3>
+
+<ul class="flex border-b">
+  <li class="-mb-px mr-1">
+    <span class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-black font-semibold" href="#">Sort By:</span>
+  </li>
+  <li class="mr-1">
+    <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Most Voted</a>
+  </li>
+  <li class="mr-1">
+    <a class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" href="#">Recents</a>
+  </li>
+</ul>
+<div class="flex flex-wrap">
+    <% @photos.each do |photo| %>
+    <div class="w-full lg:w-1/2 px-8 photo-container roundedshadow-lg">
+        <div class="title-image px-6 py-4">
+            <h3 class="font-bold text-xl mb-2 capitalize"><%= photo.title %></h3>
         </div>
         <div class="container-image">
             <% if !photo.image.url.nil? %>
-                <%= image_tag photo.image.url %>
+            <%= image_tag photo.image.url, class: "w-full" %>
             <% end %>
         </div>
-        <div class="description-image">
-            <p><%= photo.description %></p>
+        <div class="description-image px-6 py-4">
+            <p class="text-gray-700 text-base"><%= photo.description %></p>
         </div>
-        <div class="votes-image">
-            <div><%= photo.votes %></div>
-        <div>
+        <div class="votes-image px-6 py-4">
+            <div class="flex">
+                <div class="mx-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Votes: <span class="text-black text-lg"><%= photo.votes %></span></div>
+                <%= link_to root_path, class: "mx-2"  do %>
+                <i class="far fa-thumbs-up hover:text-blue-700"></i>
+                <% end %>
+                <%= link_to root_path, class: "mx-2" do %>
+                <i class="far fa-thumbs-down hover:text-red-700"></i>
+                <% end %>
+            </div>
+        </div>
     </div>
-<% end%>
-
+    <% end%>
+</div>
 
 <%= link_to "Create new", upload_path %>
-

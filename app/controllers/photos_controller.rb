@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_user, only: %i[edit show]
+  before_action :set_photo, only: %i[edit show votes]
   def index
     @photos = Photo.all
     @photos = if params[:sort] == 'likes'
@@ -26,9 +26,32 @@ class PhotosController < ApplicationController
     end
   end
 
+  def votes
+    unless helpers.exist_voting_cookie?
+      helpers.create_voting_cookie
+    end
+
+    votes_hash = helpers.retrieve_voting_cookie
+    if !votes_hash.has_key?("#{@photo.id}")
+      if params[:vote] == "like"
+        @photo.votes += 1;
+      elsif params[:vote] == "dislike"
+        @photo.votes -= 1;
+      end
+      respond_to do |format|
+        if @photo.save
+          helpers.add_to_voting_cookie(@photo.id)
+          format.js 
+        end
+      end
+    else
+      @denied = true;
+    end
+  end
+
   private
 
-  def set_user
+  def set_photo
     @photo = Photo.find(params[:id])
   end
 

@@ -10,9 +10,10 @@
     <%= link_to "Recents", {sort: :recents}, class: "bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-800 font-semibold" %>
   </li>
 </ul>
-<div class="flex flex-wrap">
+<div id="photos-container" class="flex flex-wrap items-center">
+    <% get_voting_hash %>
     <% @photos.each do |photo| %>
-    <div class="w-full lg:w-1/2 px-8 photo-container roundedshadow-lg">
+    <div id="post-<%= photo.id %>"class="w-full lg:w-1/2 px-8 photo-container roundedshadow-lg">
         <div class="title-image px-6 py-4">
             <h3 class="font-bold text-xl mb-2 capitalize"><%= photo.title %></h3>
         </div>
@@ -26,12 +27,26 @@
         </div>
         <div class="votes-image px-6 py-4">
             <div class="flex">
-                <div class="mx-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Votes: <span class="text-black text-lg"><%= photo.votes %></span></div>
-                <%= link_to root_path, class: "mx-2"  do %>
-                <i class="far fa-thumbs-up hover:text-blue-700"></i>
-                <% end %>
-                <%= link_to root_path, class: "mx-2" do %>
-                <i class="far fa-thumbs-down hover:text-red-700"></i>
+                <div class="mx-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Votes: <span class="text-black text-lg photos-votes"><%= photo.votes %></span></div>
+                <% if !@votes_hash.has_key?("#{photo.id}")  %>
+                  <div class="like-action mx-2">
+                    <%= link_to votes_path(id: photo.id, vote: :like), method: :patch, remote: true do %>
+                      <i class="far fa-thumbs-up hover:text-blue-700"></i>
+                    <% end %>
+                  </div>
+                  <div class="dislike-action mx-2">
+                    <%= link_to votes_path(id: photo.id, vote: :dislike), method: :patch, remote: true do %>
+                      <i class="far fa-thumbs-down hover:text-red-700"></i>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <%= content_tag :div, class: "mx-2 like-action"  do %>
+                    <i class="fas fa-thumbs-up hover:text-blue-700 "></i>
+                  <% end %>
+                  <%= content_tag :div, class: "mx-2 dislike-action" do %>
+                    <i class="fas fa-thumbs-down hover:text-red-700 "></i>
+                  <% end %>
+                  <span class="mx-2 bg-gray-200 rounded-sm px-3 py-1 text-sm text-green-700">Voted</span>
                 <% end %>
             </div>
         </div>

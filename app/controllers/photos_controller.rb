@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    @photo.votes = 0;
+    @photo.votes = 0
     if @photo.save
       flash[:success] = 'Photo Created successfully'
       redirect_to root_path
@@ -27,25 +27,21 @@ class PhotosController < ApplicationController
   end
 
   def votes
-    unless helpers.exist_voting_cookie?
-      helpers.create_voting_cookie
-    end
-
     votes_hash = helpers.retrieve_voting_cookie
-    if !votes_hash.has_key?("#{@photo.id}")
-      if params[:vote] == "like"
-        @photo.votes += 1;
-      elsif params[:vote] == "dislike"
-        @photo.votes -= 1;
+    if !votes_hash.key?(@photo.id.to_s)
+      if params[:vote] == 'like'
+        @photo.votes += 1
+      elsif params[:vote] == 'dislike'
+        @photo.votes -= 1
       end
       respond_to do |format|
         if @photo.save
           helpers.add_to_voting_cookie(@photo.id)
-          format.js 
+          format.js
         end
       end
     else
-      @denied = true;
+      @denied = true
     end
   end
 

@@ -11,7 +11,7 @@
   </li>
 </ul>
 <div id="photos-container" class="flex flex-wrap items-center">
-    <% get_voting_hash %>
+    <% obtain_voting_hash %>
     <% @photos.each do |photo| %>
     <div id="post-<%= photo.id %>"class="w-full lg:w-1/2 px-8 photo-container roundedshadow-lg">
         <div class="title-image px-6 py-4">

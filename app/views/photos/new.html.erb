@@ -1,0 +1,33 @@
+<div class="flex justify-center">
+    <%= form_with(model: @photo, local: true, html: { multipart: true }, class: 'bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-sm') do |form| %>
+    <% if @photo.errors.any? %>
+    <div class="g-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+        <h2 class="text-red-800 font-bold"><%= pluralize(@photo.errors.count, "error") %></h2>
+        <ul class="list-disc ml-4">
+            <% @photo.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+    <div class="field">
+        <%= form.label :title, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_field :title, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="field">
+        <%= form.label :description, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%=form.text_area :description, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", size: "1x6" %>
+    </div>
+
+    <div class="field">
+        <%= form.label :image, 'Upload the foto', class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.file_field :image, class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" %>
+        <%= form.hidden_field :image_cache %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit "Submit Your Photo", class: "bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+
+    <% end %>
+</div>

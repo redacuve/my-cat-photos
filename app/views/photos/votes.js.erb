@@ -1,0 +1,9 @@
+if (<%= !!!@denied %>){
+    document.querySelector('#post-<%= @photo.id %> .photos-votes').textContent = <%= @photo.votes %>;
+    const span_node = document.createElement('span');
+    span_node.textContent = "Voted";
+    span_node.classList = "mx-2 bg-gray-200 rounded-sm px-3 py-1 text-sm text-green-700";
+    document.querySelector('#post-<%= @photo.id %>  .votes-image .flex').appendChild(span_node);
+    document.querySelector('#post-<%= @photo.id %>  .votes-image .like-action').innerHTML = '<i class="fas fa-thumbs-up hover:text-blue-700 .like-action"></i>'
+    document.querySelector('#post-<%= @photo.id %>  .votes-image .dislike-action').innerHTML = '<i class="fas fa-thumbs-down hover:text-red-700 .dislike-action"></i>';
+}

@@ -47,13 +47,12 @@
 
 ## About The Project
 
-This is the full app using my initial code from my tutorial "A Guide for Uploading and Showing Images Trough IBM CLOUD with RAILS 6". If you want to check only the code of the tutorial, you can find the repo [here](https://github.com/redacuve/ibm-cloud-storage-example).
+This is the full app using my initial code from my tutorial "A Guide for Uploading and Showing Images Trough IBM CLOUD with RAILS 6". If you only want to check the code for  the tutorial, you can find the repo [here](https://github.com/redacuve/ibm-cloud-storage-example).
 
-My Cat Photos app allows you to like photos of cats, you only can vote once, you don't need to register to vote, it has a very simple logic for the voting, but works.
+My Cat Photos app allows you to like photos of cats. You only can vote once, you don't need to register to vote, it has a very simple logic for the voting, but it works.
 
-You can upload your Cat Photo with ease, and your photos can be voted by anyone.
-
-Have fun seeing a lot of cats photos.
+You can upload your Cat Photo with ease, and your photos can be voted on by anyone.
+Have fun looking at lots of cats photos.
 
 ## Built With
 
@@ -82,7 +81,7 @@ To get a local copy up and running follow these simple steps.
 
 Clone or fork the <a href="https://github.com/redacuve/my-cat-photos">repo</a> [git@github.com:redacuve/my-cat-photos.git]
 
-Note* Ruby and Rails needs to be installed to run the code, check [here](https://www.ruby-lang.org/en/documentation/installation/) and [here](https://guides.rubyonrails.org/getting_started.html) for further steps. Also you need to setup your own IBM Cloud or AWS keys on the credentials. [credentials](https://guides.rubyonrails.org/security.html#custom-credentials) to work properly.
+Note* Ruby and Rails needs to be installed to run the code, check [here](https://www.ruby-lang.org/en/documentation/installation/) and [here](https://guides.rubyonrails.org/getting_started.html) for further steps. Also you need to setup your own IBM Cloud or AWS keys on the [credentials](https://guides.rubyonrails.org/security.html#custom-credentials) to work properly.
 
 Attention* If you want to setup this project locally you need to add YOUR OWN CLOUD KEYS on credientials.yml, to edit this file you NEED to run this command:
 ```
@@ -110,7 +109,7 @@ It uses the carrierwave gem to upload files with ease, carrierwave by default is
 
 There are two pages for this app, the index page where you can see all of the photos uploaded by anyone and the upload page, here you can upload your photo to be voted.
 
-On the index page you car sort the photos by most voted or by recent photos, also you can vote with the like or dislike buttons if you click like, the total votes for the photo will be increased by 1 and if you click dislike the votes will decrease by one, all of the votes are updating via Vanilla JS, the method votes in the photos controller respond to a js.erb view, so voting for a photo can be done without refreshing the entire index page.
+On the index page you can sort the photos by most voted or by recent photos, also you can vote with the like or dislike buttons if you click like, the total votes for the photo will be increased by 1 and if you click dislike the votes will decrease by one, all of the votes are updating via Vanilla JS, the method votes in the photos controller respond to a js.erb view, so voting for a photo can be done without refreshing the entire index page.
 
 ## Running the code
 

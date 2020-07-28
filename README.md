@@ -41,18 +41,20 @@
 
 * [Contact](#contact)
 
-* [Acknowledgements](#acknowledgements)
-
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
-This is the full app using my initial code from my tutorial "A Guide for Uploading and Showing Images Trough IBM CLOUD with RAILS 6". If you only want to check the code for  the tutorial, you can find the repo [here](https://github.com/redacuve/ibm-cloud-storage-example).
+This is the full app using my initial code from my tutorial <a href="https://hackernoon.com/how-to-upload-and-display-images-trough-ibm-cloud-with-rails-6-xwj3um0">"A Guide for Uploading and Showing Images Trough IBM CLOUD with RAILS 6"</a>. If you only want to check the code for  the tutorial, you can find the repo [here](https://github.com/redacuve/ibm-cloud-storage-example).
 
 My Cat Photos app allows you to like photos of cats. You only can vote once, you don't need to register to vote, it has a very simple logic for the voting, but it works.
 
 You can upload your Cat Photo with ease, and your photos can be voted on by anyone.
 Have fun looking at lots of cats photos.
+
+<p align="center">
+  <img src="my-cat-photos.gif" width="450">
+</p>
 
 ## Built With
 
